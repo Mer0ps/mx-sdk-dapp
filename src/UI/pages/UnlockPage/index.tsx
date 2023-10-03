@@ -10,6 +10,7 @@ import { WalletConnectLoginButton } from 'UI/walletConnect/WalletConnectLoginBut
 import { WebWalletLoginButton } from 'UI/webWallet/WebWalletLoginButton';
 
 import styles from './unlockPageStyles.scss';
+import { MetamaskWalletLoginButton } from 'UI/metamaskWallet/MetamaskWalletLoginButton';
 
 // TODO: Rename to "UnlockPagePropsType" when sdk-dapp@3.0.0
 export interface Props {
@@ -19,6 +20,7 @@ export interface Props {
   LedgerLoginButtonText?: string;
   ExtensionLoginButtonText?: string;
   OperaWalletLoginButtonText?: string;
+  MetamaskWalletLoginButtonText?: string;
   WebWalletLoginButtonText?: string;
   WalletConnectLoginButtonText?: string;
   WalletConnectV2LoginButtonText?: string;
@@ -34,6 +36,7 @@ export const UnlockPage = ({
   WalletConnectLoginButtonText = 'xPortal App',
   ExtensionLoginButtonText = 'Extension',
   OperaWalletLoginButtonText = 'Opera Crypto Wallet',
+  MetamaskWalletLoginButtonText = 'Metamask Crypto Wallet',
   WebWalletLoginButtonText = 'Web wallet'
 }: Props) => {
   const generatedClasses = {
@@ -97,6 +100,11 @@ export const UnlockPage = ({
             <LedgerLoginButton
               loginButtonText={LedgerLoginButtonText}
               callbackRoute={loginRoute}
+            />
+
+            <MetamaskWalletLoginButton
+              callbackRoute={loginRoute}
+              loginButtonText={MetamaskWalletLoginButtonText}
             />
 
             <WalletConnectLoginButton

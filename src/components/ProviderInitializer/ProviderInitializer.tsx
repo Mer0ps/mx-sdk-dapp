@@ -40,7 +40,7 @@ import {
 } from 'utils/account';
 import { parseNavigationParams } from 'utils/parseNavigationParams';
 import { useWebViewLogin } from '../../hooks/login/useWebViewLogin';
-import { getExtensionProvider } from './helpers';
+import { getExtensionProvider, getMetamaskProvider } from './helpers';
 import { useSetLedgerProvider } from './hooks';
 
 let initalizingLedger = false;
@@ -214,6 +214,14 @@ export function ProviderInitializer() {
     }
   }
 
+  async function setMetamaskProvider() {
+    const address = await getAddress();
+    const provider = await getMetamaskProvider(address);
+    if (provider) {
+      setAccountProvider(provider);
+    }
+  }
+
   async function initializeProvider() {
     if (loginMethod == null || initalizingLedger) {
       return;
@@ -239,6 +247,11 @@ export function ProviderInitializer() {
 
       case LoginMethodsEnum.opera: {
         setOperaProvider();
+        break;
+      }
+
+      case LoginMethodsEnum.metamask: {
+        setMetamaskProvider();
         break;
       }
 

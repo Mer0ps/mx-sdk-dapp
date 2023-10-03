@@ -15,7 +15,7 @@
     "start": "yarn watch",
     "build:esm-types": "tsc --project tsconfig.json",
     "build:cjs-types": "tsc --build tsconfig.cjs.json",
-    "build": "rimraf dist && node esbuild.js && yarn build:esm-types && yarn build:cjs-types && cp package.json dist && cp README.md dist",
+    "build": "rimraf dist && node esbuild.js && yarn build:esm-types && yarn build:cjs-types && copy package.json dist && copy README.md dist",
     "publish-package": "yarn test && yarn build && cd dist && npm publish",
     "publish-package-next": "yarn test && yarn build && cd dist && npm publish --tag next",
     "publish-yalc": "yarn build && cd dist && yalc publish --push",
@@ -56,6 +56,8 @@
     "@types/platform": "1.3.4",
     "@types/qrcode": "1.4.2",
     "@types/qs": "6.9.7",
+    "@types/react": "18.2.22",
+    "@types/react-dom": "18.2.7",
     "@typescript-eslint/eslint-plugin": "5.0.0",
     "@typescript-eslint/parser": "5.14.0",
     "axios-mock-adapter": "1.21.2",
@@ -138,12 +140,12 @@
   },
   "files": [
     "*.js",
-    "*.js",
     "**/*.js",
     "*.d.ts",
     "**/*.d.ts"
   ],
   "dependencies": {
+    "@merops/mx-sdk-js-metamask-provider": "^0.1.3",
     "@multiversx/sdk-core": "12.6.0",
     "@multiversx/sdk-extension-provider": "3.0.0",
     "@multiversx/sdk-hw-provider": "6.4.0",

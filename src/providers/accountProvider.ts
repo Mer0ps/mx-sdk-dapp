@@ -5,6 +5,7 @@ import { WalletProvider } from '@multiversx/sdk-web-wallet-provider';
 import { IDappProvider } from 'types';
 import { WalletConnectV2Provider } from 'utils/walletconnect/__sdkWalletconnectProvider';
 import { emptyProvider } from './utils';
+import { MetamaskProvider } from '@merops/mx-sdk-js-metamask-provider';
 
 export type ProvidersType =
   | IDappProvider
@@ -12,6 +13,7 @@ export type ProvidersType =
   | WalletProvider
   | HWProvider
   | OperaProvider
+  | MetamaskProvider
   | WalletConnectV2Provider;
 
 let accountProvider: ProvidersType = emptyProvider;

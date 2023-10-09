@@ -37,19 +37,14 @@ export const useMetamaskLogin = ({
   const isLoggedIn = getIsLoggedIn();
 
   async function initiateLogin() {
-    console.warn("Metamask initiateLogin");
-    console.warn(isLoggedIn);
     if (isLoggedIn) {
       throw new Error(SECOND_LOGIN_ATTEMPT_ERROR);
     }
 
-    //setIsLoading(true);
+    setIsLoading(true);
     const provider: MetamaskProvider = MetamaskProvider.getInstance();
 
-    console.warn(provider);
-
     try {
-        console.warn("Metamask try");
       const isSuccessfullyInitialized: boolean = await provider.init();
 
       if (!isSuccessfullyInitialized) {

@@ -146,6 +146,7 @@
   ],
   "dependencies": {
     "@merops/mx-sdk-js-metamask-provider": "^0.1.6",
+    "@metamask/detect-provider": "^2.0.0",
     "@multiversx/sdk-core": "12.6.0",
     "@multiversx/sdk-extension-provider": "3.0.0",
     "@multiversx/sdk-hw-provider": "6.4.0",

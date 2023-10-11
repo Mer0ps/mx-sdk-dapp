@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { DataTestIdsEnum } from 'constants/index';
 import { useMetamaskLogin } from 'hooks';
 import { getIsNativeAuthSingingForbidden } from 'services/nativeAuth/helpers';
@@ -16,8 +16,6 @@ export interface MetamaskWalletLoginButtonPropsType
   disabled?: boolean;
 }
 
-const isMetamaskWalletAvailable = getIsMetamaskWalletAvailable();
-
 export const MetamaskWalletLoginButton: (
   props: MetamaskWalletLoginButtonPropsType
 ) => JSX.Element = ({
@@ -33,12 +31,22 @@ export const MetamaskWalletLoginButton: (
   'data-testid': dataTestId = DataTestIdsEnum.metamaskLoginButton
 }) => {
   const disabledConnectButton = getIsNativeAuthSingingForbidden(token);
+  const [isMetamaskWalletAvailable, setIsMetamaskWalletAvailable] = useState(false);
   const [onInitiateLogin] = useMetamaskLogin({
     callbackRoute,
     token,
     onLoginRedirect,
     nativeAuth
   });
+
+  useEffect(() => {
+    async function checkMetamaskAvailability() {
+      const isMetamaskWalletAvailable = await getIsMetamaskWalletAvailable();
+      setIsMetamaskWalletAvailable(isMetamaskWalletAvailable);
+    }
+
+    checkMetamaskAvailability();
+  }, []);
 
   const handleLogin = () => {
     onInitiateLogin();

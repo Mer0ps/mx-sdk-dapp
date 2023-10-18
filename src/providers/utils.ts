@@ -1,3 +1,4 @@
+import { MetamaskProvider } from '@merops/mx-sdk-js-metamask-provider';
 import { SignableMessage, Transaction } from '@multiversx/sdk-core';
 import { ExtensionProvider } from '@multiversx/sdk-extension-provider';
 import { HWProvider } from '@multiversx/sdk-hw-provider';
@@ -28,6 +29,8 @@ export const getProviderType = <TProvider extends object>(
       return LoginMethodsEnum.extension;
     case OperaProvider:
       return LoginMethodsEnum.opera;
+    case MetamaskProvider:
+      return LoginMethodsEnum.metamask;
     case EmptyProvider:
       return LoginMethodsEnum.none;
     default:

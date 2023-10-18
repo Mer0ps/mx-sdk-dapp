@@ -28,6 +28,7 @@ export enum DataTestIdsEnum {
   nftIdentifier = 'nftIdentifier',
   nftLabel = 'nftLabel',
   operaLoginButton = 'operaLoginButton',
+  metamaskLoginButton = 'metamaskLoginButton',
   prevBtn = 'prevBtn',
   receiverLink = 'receiverLink',
   receiverShard = 'receiverShard',
